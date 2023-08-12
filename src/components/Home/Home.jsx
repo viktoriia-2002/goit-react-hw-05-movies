@@ -1,13 +1,13 @@
-import { getMovies } from '../../utilities/api';
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { getContent } from '../../utilities/api';
+import { useState, useEffect, useCallback } from 'react';
+import RenderMovies from '../RenderMovies/RenderMovies';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = useCallback(async () => {
-    const movieData = await getMovies();
-    setMovies(movieData.results);
+    const moviesData = await getContent('movies');
+    setMovies(moviesData.results);
   }, []);
 
   useEffect(() => {
@@ -20,13 +20,7 @@ const Home = () => {
     <div>
       <h1>HOME</h1>
       <h1>Trending now</h1>
-      <ul>
-        {movies?.map(({ title, id }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+      <RenderMovies movies={movies} />
     </div>
   );
 };
