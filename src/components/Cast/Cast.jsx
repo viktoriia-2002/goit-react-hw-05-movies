@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 
 import { getContent } from '../../utilities/api';
+import { CastWrapper } from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -25,18 +26,18 @@ const Cast = () => {
   return (
     <>
       <Outlet />
-      <div>
+      <CastWrapper>
         {cast?.map(({ profile_path, id, name, character }) => (
           <div key={id}>
             {profile_path && (
               <img src={`${castUrl}${profile_path}`} alt="actor" />
             )}
-            <h2>{name}</h2>
+            <li>{name}</li>
             <p>Character: {character}</p>
             <hr />
           </div>
         ))}
-      </div>
+      </CastWrapper>
     </>
   );
 };

@@ -6,7 +6,6 @@ import Cast from './Cast';
 import Reviews from './Reviews';
 import NavBar from './navBar';
 import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 const App = () => {
