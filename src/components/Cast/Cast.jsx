@@ -11,8 +11,9 @@ const Cast = () => {
   const castUrl = 'http://image.tmdb.org/t/p/w200';
 
   const fetchMovie = useCallback(async () => {
-    const movieData = await getContent('movie', movieId);
+    const movieData = await getContent('cast', movieId);
     setCast(movieData.cast);
+    console.log({ movieData });
   }, [setCast, movieId]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Cast = () => {
     <>
       <Outlet />
       <div>
-        {cast.map(({ profile_path, id, name, character }) => (
+        {cast?.map(({ profile_path, id, name, character }) => (
           <div key={id}>
             {profile_path && (
               <img src={`${castUrl}${profile_path}`} alt="actor" />

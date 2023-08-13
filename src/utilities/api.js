@@ -9,8 +9,11 @@ const getUrl = (type, movieId, searchItem) => {
     case 'movies':
       url = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
       break;
-    case 'movie':
+    case 'cast':
       url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+      break;
+    case 'movie':
+      url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
 
       break;
     case 'reviews':

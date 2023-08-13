@@ -28,8 +28,8 @@ const Movies = () => {
         Movies
         <input
           type="text"
-          value={inputValue} // Bind input value to the state
-          onChange={handleInputChange} // Attach onChange event handler
+          value={inputValue} 
+          onChange={handleInputChange}
         />
         <button onClick={() => onSubmit()}>Search</button>
       </div>
