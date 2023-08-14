@@ -21,9 +21,9 @@ const Reviews = () => {
     <>
       <div>
         {reviews.length ? (
-          reviews.map(({ author, content, id }) => (
-            <ul>
-              <ReviewsAuthor key={id}>Author: {author}</ReviewsAuthor>
+          reviews.map(({ author, content, id }, index) => (
+            <ul key={id + index}>
+              <ReviewsAuthor>Author: {author}</ReviewsAuthor>
               <p> {content}</p>
             </ul>
           ))
@@ -31,12 +31,7 @@ const Reviews = () => {
           <div>We don't have any reviews for this movie.</div>
         )}
       </div>
-      ;
     </>
   );
 };
 export default Reviews;
-
-// author
-
-// content

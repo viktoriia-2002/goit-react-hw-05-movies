@@ -1,6 +1,4 @@
-// const apiUrl = 'https://pixabay.com/api/';
-// const apiKey = '36126930-7b2057d774b58ed23a3e8d721';
-const token =
+const apiKey =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjZiNDliNjNhM2EyZjQxOWJhOWU1ZTNhZTAzY2U0MyIsInN1YiI6IjY0ZDZhZTE1ZDA1MWQ5MDBlNWRmYmQxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.STU71wRiOWoP13PQY4J8N29erQX3VqmOXPZFt2eD6VU';
 
 const getUrl = (type, movieId, searchItem) => {
@@ -36,7 +34,7 @@ export const getContent = async (type, movieId, searchItem) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: apiKey,
       },
     });
 

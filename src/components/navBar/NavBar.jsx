@@ -1,23 +1,17 @@
 import { Link } from 'react-router-dom';
+import { Button } from './NavBar.styled';
 
 const NavBar = ({ activeLocation }) => {
-  const homeButtonClass = activeLocation === 'home' ? 'btn btn-primary' : '';
-  const moviesButtonClass =
-    activeLocation === 'movies' ? 'btn btn-primary' : '';
+  const primaryHome = activeLocation === 'home';
+  const primaryMovie = activeLocation === 'movies';
 
-  console.log();
   return (
     <>
       <Link to="/">
-        {' '}
-        <button type="button" className={`btn ${homeButtonClass}`}>
-          Home
-        </button>
+        <Button primary={primaryHome}>Home</Button>
       </Link>
       <Link to="/movies">
-        <button type="button" className={`btn ${moviesButtonClass}`}>
-          Movies
-        </button>
+        <Button primary={primaryMovie}>Movie</Button>
       </Link>
     </>
   );

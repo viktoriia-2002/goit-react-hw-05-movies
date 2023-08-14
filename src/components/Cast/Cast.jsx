@@ -14,14 +14,11 @@ const Cast = () => {
   const fetchMovie = useCallback(async () => {
     const movieData = await getContent('cast', movieId);
     setCast(movieData.cast);
-    console.log({ movieData });
   }, [setCast, movieId]);
 
   useEffect(() => {
     fetchMovie();
   }, [fetchMovie]);
-
-  console.log({ cast });
 
   return (
     <>

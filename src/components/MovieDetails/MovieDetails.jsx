@@ -1,15 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { getContent } from '../../utilities/api';
+import {
+  GenresTitle,
+  GenresList,
+  GenresListItem,
+  MovieWrapper,
+  MovieWrapperDesq,
+  StyledLink,
+  Button,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const params = useParams();
-  console.log({ params });
   const { movieId } = params;
 
   const movieMainUrl = 'https://image.tmdb.org/t/p/w200';
-  console.log(movieMainUrl);
 
   const fetchMovie = useCallback(async () => {
     const movieData = await getContent('movie', movieId);
@@ -24,23 +31,30 @@ const MovieDetails = () => {
 
   return (
     <>
-      <div>
-        <Link to="/">
-          <button> Go back</button>
-        </Link>
+      <nav>
+        <StyledLink to="/">
+          <Button>Go back</Button>
+        </StyledLink>
+      </nav>
+      <MovieWrapper>
         {poster_path && (
           <img src={`${movieMainUrl}${poster_path}`} alt="movie" />
         )}
-        <h2>{original_title}</h2>
-        <p>User Score: {vote_average}%</p>
-        <p>{overview}</p>
-        <ul>
-          {genres?.map(({ id, name }) => (
-            <li key={id}>{name}</li>
-          ))}
-        </ul>
-
-        <div>additional information</div>
+        <MovieWrapperDesq>
+          <h2>{original_title}</h2>
+          <p>User Score: {vote_average}%</p>
+          <h3>Overview</h3>
+          <p>{overview}</p>
+          <GenresTitle>Genres</GenresTitle>
+          <GenresList>
+            {genres?.map(({ id, name }) => (
+              <GenresListItem key={id}>{name}</GenresListItem>
+            ))}
+          </GenresList>
+        </MovieWrapperDesq>
+      </MovieWrapper>
+      <div>
+        <p>Additional information</p>
         <ul>
           <li>
             <Link to={`/movies/${movieId}/cast`}>Cast</Link>
@@ -50,6 +64,7 @@ const MovieDetails = () => {
           </li>
         </ul>
         <Outlet />
+        {/* <Outlet /> // do not touch it */}
       </div>
     </>
   );

@@ -14,8 +14,6 @@ const Home = () => {
     fetchMovies();
   }, [fetchMovies]);
 
-  console.log(movies);
-
   return (
     <div>
       <h1>Trending now</h1>
