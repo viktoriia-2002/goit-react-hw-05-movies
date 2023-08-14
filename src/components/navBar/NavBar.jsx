@@ -7,12 +7,14 @@ const NavBar = ({ activeLocation }) => {
 
   return (
     <>
-      <Link to="/">
-        <Button primary={primaryHome}>Home</Button>
-      </Link>
-      <Link to="/movies">
-        <Button primary={primaryMovie}>Movie</Button>
-      </Link>
+      <header>
+        <Link to="/">
+          <Button primary={primaryHome}>Home</Button>
+        </Link>
+        <Link to="/movies">
+          <Button primary={primaryMovie}>Movie</Button>
+        </Link>
+      </header>
     </>
   );
 };

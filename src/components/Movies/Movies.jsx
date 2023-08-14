@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { getContent } from '../../utilities/api';
 import RenderMovies from '../RenderMovies/RenderMovies';
+import { ButtonSearch, InputSearch } from './Movies.styled';
 
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
@@ -23,10 +24,13 @@ const Movies = () => {
   return (
     <>
       <div>
-        <div></div>
         Movies
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-        <button onClick={() => onSubmit()}>Search</button>
+        <InputSearch
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <ButtonSearch onClick={() => onSubmit()}>Search</ButtonSearch>
       </div>
 
       <RenderMovies movies={movies} />
